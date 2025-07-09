@@ -1,18 +1,19 @@
 ---
-// 仮のツール一覧
+// とりあえずのデモデータ
 const tools = [
-  { name: "rakko.tools", url: "https://rakko.tools/", description: "便利ツール集" },
-  { name: "mtool.work", url: "https://mtool.work/", description: "動画・変換ツール集" }
+  { name: "rakko.tools", url: "https://rakko.tools/", description: "開発者向け便利ツール集" },
+  { name: "mtool.work", url: "https://mtool.work/", description: "動画・変換ツールまとめ" }
 ];
 ---
 
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <title>ツールまとめサイト</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ツールまとめデモ</title>
   </head>
   <body>
-    <h1>デモ版ツール一覧</h1>
+    <h1>ツールまとめデモ</h1>
     <ul>
       {tools.map(tool => (
         <li>
