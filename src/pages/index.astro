@@ -1,36 +1,59 @@
 ---
 import data from '../data/tools.yaml';
-let active = 'all';
 const { categories, tools } = data;
 ---
 
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>ツール一覧</title>
+    <title>ツールまとめ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/menu.css" />
   </head>
   <body>
+    <h1>ツールまとめサイト</h1>
+
     <nav class="category-tabs">
       {categories.map(cat => (
-        <button
-          class:active={active === cat.id}
-          on:click={() => (active = cat.id)}
-        >{cat.label}</button>
+        <button data-category={cat.id}>{cat.label}</button>
       ))}
     </nav>
 
     <section class="tool-grid">
-      {tools
-        .filter(t => active === 'all' || t.category === active)
-        .map(t => (
-          <a class="tool-card" href={t.url} target="_blank">
-            {t.favorite && <span class="star">★</span>}
-            <img src={`/icons/${t.icon}`} alt="" class="icon" />
-            <p class="name">{t.name}</p>
-          </a>
-        ))}
+      {tools.map(tool => (
+        <a
+          class="tool-card"
+          href={tool.url}
+          target="_blank"
+          data-category={tool.category}
+        >
+          {tool.favorite && <span class="star">★</span>}
+          <img src={`/icons/${tool.icon}`} alt="" class="icon" />
+          <span class="name">{tool.name}</span>
+        </a>
+      ))}
     </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.category-tabs button');
+        const cards = document.querySelectorAll('.tool-card');
+
+        tabs.forEach((tab) => {
+          tab.addEventListener('click', () => {
+            const selected = tab.dataset.category;
+
+            tabs.forEach((t) =>
+              t.classList.toggle('active', t === tab)
+            );
+
+            cards.forEach((card) => {
+              const match = selected === 'all' || card.dataset.category === selected;
+              card.style.display = match ? '' : 'none';
+            });
+          });
+        });
+      });
+    </script>
   </body>
 </html>
