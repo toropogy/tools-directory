@@ -1,0 +1,24 @@
+---
+// 仮のツール一覧
+const tools = [
+  { name: "rakko.tools", url: "https://rakko.tools/", description: "便利ツール集" },
+  { name: "mtool.work", url: "https://mtool.work/", description: "動画・変換ツール集" }
+];
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ツールまとめサイト</title>
+  </head>
+  <body>
+    <h1>デモ版ツール一覧</h1>
+    <ul>
+      {tools.map(tool => (
+        <li>
+          <a href={tool.url} target="_blank">{tool.name}</a> — {tool.description}
+        </li>
+      ))}
+    </ul>
+  </body>
+</html>
