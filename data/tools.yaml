@@ -1,10 +1,37 @@
-- id: rakko-tools
-  name: "rakko.tools"
-  url: "https://rakko.tools/"
-  description: "開発者向け便利ツール集"
-  tags: ["dev", "api", "cli"]
-- id: mtool-work
-  name: "mtool.work"
-  url: "https://mtool.work/"
-  description: "動画・変換ツールまとめ"
-  tags: ["video", "conversion"]
+categories:
+  - id: all
+    label: ホーム
+  - id: seo
+    label: SEO
+  - id: ssl
+    label: SSL
+  - id: text
+    label: テキスト
+  - id: network
+    label: ネットワーク
+  - id: encode
+    label: エンコード
+  - id: domain
+    label: ドメイン
+
+tools:
+  - id: ip-lookup
+    name: "IPアドレス確認"
+    url: "/tools/ip-lookup"
+    icon: "ip.svg"
+    category: network
+    favorite: true
+
+  - id: json-formatter
+    name: "JSON整形"
+    url: "/tools/json-formatter"
+    icon: "json.svg"
+    category: encode
+    favorite: false
+
+  - id: text-counter
+    name: "文字数カウント"
+    url: "/tools/text-counter"
+    icon: "counter.svg"
+    category: text
+    favorite: true
