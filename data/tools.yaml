@@ -1,0 +1,10 @@
+- id: rakko-tools
+  name: "rakko.tools"
+  url: "https://rakko.tools/"
+  description: "開発者向け便利ツール集"
+  tags: ["dev", "api", "cli"]
+- id: mtool-work
+  name: "mtool.work"
+  url: "https://mtool.work/"
+  description: "動画・変換ツールまとめ"
+  tags: ["video", "conversion"]
