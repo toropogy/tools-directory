@@ -1,25 +1,36 @@
 ---
-// とりあえずのデモデータ
-const tools = [
-  { name: "rakko.tools", url: "https://rakko.tools/", description: "開発者向け便利ツール集" },
-  { name: "mtool.work", url: "https://mtool.work/", description: "動画・変換ツールまとめ" }
-];
+import data from '../data/tools.yaml';
+let active = 'all';
+const { categories, tools } = data;
 ---
 
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ツールまとめデモ</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>ツール一覧</title>
+    <link rel="stylesheet" href="/styles/menu.css" />
   </head>
   <body>
-    <h1>ツールまとめデモ</h1>
-    <ul>
-      {tools.map(tool => (
-        <li>
-          <a href={tool.url} target="_blank">{tool.name}</a> — {tool.description}
-        </li>
+    <nav class="category-tabs">
+      {categories.map(cat => (
+        <button
+          class:active={active === cat.id}
+          on:click={() => (active = cat.id)}
+        >{cat.label}</button>
       ))}
-    </ul>
+    </nav>
+
+    <section class="tool-grid">
+      {tools
+        .filter(t => active === 'all' || t.category === active)
+        .map(t => (
+          <a class="tool-card" href={t.url} target="_blank">
+            {t.favorite && <span class="star">★</span>}
+            <img src={`/icons/${t.icon}`} alt="" class="icon" />
+            <p class="name">{t.name}</p>
+          </a>
+        ))}
+    </section>
   </body>
 </html>
